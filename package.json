@@ -1,0 +1,23 @@
+{
+  "name": "gespoubelle-server",
+  "version": "1.0.0",
+  "description": "Application serveur pour Gespoubelle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server",
+    "http",
+    "rest",
+    "api",
+    "restfull"
+  ],
+  "author": "Gilles Cédric",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.3.3"
+  }
+}
