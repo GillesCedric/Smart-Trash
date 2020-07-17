@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const Poubelle = require('./poubelle');
 module.exports = (sequelize, DataTypes) => {
   class Notification extends Model {
     /**
@@ -19,9 +20,28 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Notification.init({
-    message: DataTypes.STRING,
-    isActivated: DataTypes.BOOLEAN,
-    poubelleId: DataTypes.INTEGER
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    message: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    isActivated: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 1
+    },
+    poubelleId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Poubelle,
+        key: 'id',
+      }
+    }
   }, {
     sequelize,
     modelName: 'Notification',

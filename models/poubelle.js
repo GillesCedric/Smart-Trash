@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const Utilisateur = require('./utilisateur');
+const Videur = require('./videur');
 module.exports = (sequelize, DataTypes) => {
   class Poubelle extends Model {
     /**
@@ -26,14 +28,52 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Poubelle.init({
-    marque: DataTypes.STRING,
-    dimensions: DataTypes.STRING,
-    adresseIp: DataTypes.STRING,
-    etat: DataTypes.ENUM,
-    niveau: DataTypes.INTEGER,
-    isActivated: DataTypes.BOOLEAN,
-    utilisateurNumCni: DataTypes.STRING,
-    videurNumCni: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    marque: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    dimensions: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    adresseIp: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    etat: {
+      type: DataTypes.ENUM,
+      values: ['Pleine', 'Moitié Pleine', 'Vide'],
+      defaultValue: 'Vide'
+    },
+    niveau: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    isActivated: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: 1
+    },
+    utilisateurNumCni: {
+      type: DataTypes.STRING,
+      references: {
+        model: Utilisateur,
+        key: 'numCni',
+      }
+    },
+    videurNumCni: {
+      type: DataTypes.STRING,
+      references: {
+        model: Videur,
+        key: 'numCni',
+      }
+    }
   }, {
     sequelize,
     modelName: 'Poubelle',

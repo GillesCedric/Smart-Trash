@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const Poubelle = require('./poubelle');
 module.exports = (sequelize, DataTypes) => {
   class Sms extends Model {
     /**
@@ -19,8 +20,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Sms.init({
-    message: DataTypes.STRING,
-    poubelleId: DataTypes.INTEGER
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
+    message: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    poubelleId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Poubelle,
+        key: 'id',
+      }
+    }
   }, {
     sequelize,
     modelName: 'Sms',
