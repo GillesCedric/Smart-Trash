@@ -13,7 +13,7 @@ server.use(bodyParser.json());
 //configure routes
 server.get('/', (req, res) => {
 	res.setHeader('Content-Type', 'text/html');
-	res.status(200).send('<div style="margin:0 auto;"><h1>Bienvenue sur le serveur de GesPoubelle</h1></div>');
+	res.status(200).send('<h1>Bienvenue sur le serveur de GesPoubelle</h1>');
 });
 
 server.use('/api/', apiRouter);

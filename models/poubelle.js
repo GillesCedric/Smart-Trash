@@ -34,6 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       allowNull: false
     },
+    token: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     marque: {
       type: DataTypes.STRING,
       allowNull: true,
