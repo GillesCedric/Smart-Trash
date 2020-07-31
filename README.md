@@ -1,2 +1,2 @@
-# GesPoubelle-server
-API pour la gestion du serveur de l'application GesPoubelle
+# Smart-Trash
+Smart-Trash est une application cliente et serveur permettant le contrôle en temps réél du niveau de remplissage des poubelles et la gestion de ceux ci
