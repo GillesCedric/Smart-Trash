@@ -11,7 +11,7 @@ exports.router = (() => {
 	apiRouter.route('/utilisateurs/register/').post(utilisateur.register);
 	apiRouter.route('/utilisateurs/login/').post(utilisateur.login);
 	apiRouter.route('/utilisateurs/perso/').get(utilisateur.get);
-	apiRouter.route('/utilisateurs/deleteutilisateur/').post(utilisateur.delete);
+	apiRouter.route('/utilisateurs/deleteutilisateur/').post(utilisateur.delete); 0
 	apiRouter.route('/utilisateurs/update/').post(utilisateur.update);
 	apiRouter.route('/utilisateurs/admin/').post(utilisateur.makeAdmin);
 	apiRouter.route('/utilisateurs/activate/').post(utilisateur.activate);
@@ -25,6 +25,7 @@ exports.router = (() => {
 	apiRouter.route('/utilisateurs/poubelles/activate/').post(utilisateur.activatePoubelle);
 	apiRouter.route('/utilisateurs/poubelles/').get(utilisateur.getAllPoubelles);
 	apiRouter.route('/utilisateurs/poubelles/perso').get(utilisateur.getPoubelle);
+	apiRouter.route('/utilisateurs/poubelles/pwv').get(utilisateur.getAllPoubellesWithVideurs);
 
 	return apiRouter;
 })();

@@ -18,6 +18,15 @@ module.exports = {
 		var login = req.body.login;
 		var mail = req.body.mail;
 		var password = req.body.password;
+		var isAdmin = req.body.isAdmin;
+
+		//Getting auth header
+		var headerAuth = req.headers['authorization'];
+		var utilisateurId = jwtUtils.getUtilisateurId(headerAuth);
+
+		if (utilisateurId < 0) {
+			return res.status(400).json({ 'error': 'token invalide' });
+		}
 
 		if (numCni == null || nom == null || prenom == null || tel == null || login == null || mail == null || password == null) {
 			return res.status(400).json({ 'error': 'paramètres manquants' });
@@ -73,7 +82,7 @@ module.exports = {
 					mail: mail,
 					password: bcryptedPassword,
 					isActivated: true,
-					isAdmin: false
+					isAdmin: isAdmin
 
 				})
 					.then(newUser => {
@@ -143,6 +152,7 @@ module.exports = {
 				return res.status(200).json({
 					'utilisateurId': userFound.id,
 					'utilisateurNumCni': userFound.numCni,
+					'isAdmin': userFound.isAdmin,
 					'token': jwtUtils.generateTokenForUser(userFound)
 				})
 			} else {
@@ -760,6 +770,10 @@ module.exports = {
 		var headerAuth = req.headers['authorization'];
 		var utilisateurId = jwtUtils.getUtilisateurId(headerAuth);
 
+		var order = req.query.order;
+		var limit = parseInt(req.query.limit);
+		var offset = parseInt(req.query.offset);
+
 		if (utilisateurId < 0) {
 			return res.status(400).json({ 'error': 'token invalide' });
 		}
@@ -781,7 +795,16 @@ module.exports = {
 			(userFound, done) => {
 				if (userFound) {
 					models.Videur.findAll(
-						{ attributes: ['id', 'numCni', 'nom', 'prenom', 'tel', 'isActivated', 'utilisateurNumCni', 'createdAt', 'updatedAt'] }
+						{
+							order: [(order != null) ? order.split(':') : ['id', 'ASC']],
+							attributes: ['id', 'numCni', 'nom', 'prenom', 'tel', 'isActivated', 'utilisateurNumCni', 'createdAt', 'updatedAt'],
+							limit: (!isNaN(limit)) ? limit : null,
+							offset: (!isNaN(offset)) ? offset : null,
+							include: [{
+								model: models.Utilisateur,
+								attributes: ['nom', 'prenom']
+							}]
+						}
 					)
 						.then(videurs => {
 							done(videurs);
@@ -1033,6 +1056,70 @@ module.exports = {
 				}
 			});
 	},
+	getAllPoubellesWithVideurs: (req, res) => {
+		//Getting Auth headers
+		var headerAuth = req.headers['authorization'];
+		var utilisateurId = jwtUtils.getUtilisateurId(headerAuth);
 
+		var order = req.query.order;
+		var limit = parseInt(req.query.limit);
+		var offset = parseInt(req.query.offset);
+
+		if (utilisateurId < 0) {
+			return res.status(400).json({ 'error': 'token invalide' });
+		}
+
+		asyncLib.waterfall([
+			done => {
+				models.Utilisateur.findOne({
+					where: { id: utilisateurId }
+				})
+					.then(userFound => {
+						done(null, userFound);
+					})
+					.catch(err => {
+						console.log(err);
+						return res.status(500).json({ 'error': 'impossible de vérifier l\'utilisateur' });
+					})
+			},
+			(userFound, done) => {
+				if (userFound) {
+					models.Poubelle.findAll(
+						{
+							order: [(order != null) ? order.split(':') : ['id', 'ASC']],
+							attributes: ['id', 'token', 'adresseIp', 'etat', 'niveau', 'isActivated', 'utilisateurNumCni', 'videurNumCni', 'updatedAt'],
+							limit: (!isNaN(limit)) ? limit : null,
+							offset: (!isNaN(offset)) ? offset : null,
+							include: [{
+								model: models.Videur,
+								attributes: ['nom', 'prenom'],
+							},
+							{
+								model: models.Utilisateur,
+								attributes: ['nom', 'prenom'],
+							}]
+						}
+					)
+						.then(poubelles => {
+							done(poubelles);
+						})
+						.catch(err => {
+							console.log(err);
+							return res.status(500).json({ 'error': 'impossible de récuperer les poubelles' });
+						})
+				} else {
+					return res.status(404).json({ 'error': 'l\'utilisateur n\'existe pas' });
+				}
+			}
+		],
+			(poubelles) => {
+				if (poubelles) {
+					return res.status(201).json(poubelles);
+				} else {
+					return res.status(500).json({ 'error': 'ereur lors de la récupération des poubelles' })
+				}
+			});
+
+	},
 
 }

@@ -5,7 +5,7 @@ const JWT_SIGN_SECRET = 'g{pZG_UtEpmJVMbZ+4b%d*sf>z(CDtybvM0"P%iN=3ixW\]LX%qM_9>
 
 //Exported functions
 module.exports = {
-	generateTokenForUser: userData => jwt.sign({ userId: userData.id, isAdmin: userData.isAdmin }, JWT_SIGN_SECRET, { expiresIn: '24h' }),
+	generateTokenForUser: userData => jwt.sign({ userId: userData.id, isAdmin: userData.isAdmin }, JWT_SIGN_SECRET, { expiresIn: '72h' }),
 	parseAuthorization: authorization => (authorization != null) ? authorization.replace('Bearer ', '') : null,
 	getUtilisateurId: authorization => {
 		var userId = -1;
