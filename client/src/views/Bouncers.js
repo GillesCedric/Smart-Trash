@@ -170,7 +170,7 @@ class Bouncers extends React.Component {
                     </thead>
                     <tbody>
                       {!this.state.videursReady ?
-                        <tr><td colSpan={8} align='center'><img src={loader} width={60} className='mt-5'></img></td></tr> :
+                        <tr><td colSpan={8} align='center'><img alt='loader' src={loader} width={60} className='mt-5'></img></td></tr> :
                         this.state.videurs.map((values, key) => (
                           <tr key={key}>
                             <td>{values.id}</td>
@@ -181,11 +181,11 @@ class Bouncers extends React.Component {
                             <td>{values.Utilisateur.nom + ' ' + values.Utilisateur.prenom}</td>
                             <td className='text-center'>
                               {values.isActivated ?
-                                <a title="Désactiver le videur" onClick={() => this.updateVideur(values.id)} className="text-decoration-none">
+                                <a title="Désactiver le videur" href="#" onClick={(e) => { e.preventDefault(); return this.updateVideur(values.id) }} className="text-decoration-none">
                                   <i className="fas fa-times fa-sm text-danger text-lg"></i>
                                 </a>
                                 :
-                                <a title="Activer le videur" onClick={() => this.updateVideur(values.id)} className="text-decoration-none">
+                                <a title="Activer le videur" href="#" onClick={(e) => { e.preventDefault(); return this.updateVideur(values.id) }} className="text-decoration-none">
                                   <i className="fas fa-check-square fa-sm text-success text-lg"></i>
                                 </a>
                               }

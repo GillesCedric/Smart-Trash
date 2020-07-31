@@ -1,7 +1,7 @@
 {
-  "name": "gespoubelle-server",
+  "name": "Smart-Trash-Server",
   "version": "1.0.0",
-  "description": "Application serveur pour Gespoubelle",
+  "description": "Application serveur pour Smart-Trash",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

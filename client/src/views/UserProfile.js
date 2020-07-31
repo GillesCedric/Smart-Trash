@@ -214,17 +214,6 @@ class UserProfile extends React.Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    {/* {<Row>
-                      <Col md="12">
-                        <FormGroup>
-                          <label>Privilège</label>
-                          <select name="privilege" className="form-control">
-                            <option value={1}>Administrateur</option>
-                            <option value={0}>Utilisateur</option>
-                          </select>
-                        </FormGroup>
-                      </Col>
-                    </Row>} */}
                   </Form>
                 </CardBody>
                 <CardFooter>
@@ -244,7 +233,7 @@ class UserProfile extends React.Component {
                     <div className="block block-three" />
                     <div className="block block-four" />
                     {!this.state.userReady ?
-                      <div><img src={loader} width={60} className='mt-5'></img></div>
+                      <div><img alt="loader" src={loader} width={60} className='mt-5'></img></div>
                       :
                       <a href="#pablo" onClick={e => e.preventDefault()}>
                         <img
@@ -262,10 +251,12 @@ class UserProfile extends React.Component {
                     }
 
                   </div>
-                  <div className="card-description">
-                    Do not be scared of the truth because we need to restart the
-                    human foundation in truth And I love you like Kanye loves
-                    Kanye I love Rick Owens’ bed design but the back is...
+                  <div className="card-description text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Sed et viverra lacus. Etiam convallis purus magna,
+                    eleifend semper dui sagittis sed.
+                    Suspendisse eu mollis sapien. Nulla facilisi.
+                    Donec urna sem, aliquam eu metus quis.
                   </div>
                 </CardBody>
                 <CardFooter>

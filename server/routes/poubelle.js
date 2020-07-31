@@ -8,12 +8,6 @@ const IP_ADDRESS_REGEX = /^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1
 
 //Routes
 module.exports = {
-	add: (req, res) => {
-
-	},
-	delete: (req, res) => {
-
-	},
 	update: (req, res) => {
 		//params
 		var token = req.body.token;

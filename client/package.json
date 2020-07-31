@@ -1,8 +1,9 @@
 {
-  "name": "smart-trash",
+  "name": "Smart-Trash-Client",
   "version": "1.0.0",
+  "description": "Application client pour Smart-Trash",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/black-dashboard-react/#/admin/dashboard",
+  "homepage": "https://smart-trash.neway-agency.com/admin/dashboard",
   "dependencies": {
     "@types/react": "16.9.23",
     "axios": "^0.19.2",

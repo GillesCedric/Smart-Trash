@@ -73,7 +73,7 @@ class Login extends React.Component {
 
 		function remcl() {
 			let parent = this.parentNode.parentNode;
-			if (this.value == "") {
+			if (this.value === "") {
 				parent.classList.remove("focus");
 			}
 		}
@@ -120,13 +120,13 @@ class Login extends React.Component {
 	render() {
 		return (
 			<>
-				<img className="wave" src={wave}></img>
+				<img alt="wave" className="wave" src={wave}></img>
 				<div className="container">
 					<div className="react-notification-alert-container">
 						<NotificationAlert ref="notificationAlert" />
 					</div>
 					<div className="img">
-						<img className="wave" src={bg}></img>
+						<img alt="bg" className="wave" src={bg}></img>
 					</div>
 					<div className="login-content">
 						<form onSubmit={this.handleSubmit} className='form' >

@@ -193,7 +193,7 @@ class Users extends React.Component {
                     </thead>
                     <tbody>
                       {!this.state.userReady ?
-                        <tr><td colSpan={9} align='center'><img src={loader} width={60} className='mt-5'></img></td></tr> :
+                        <tr><td colSpan={9} align='center'><img alt="loader" src={loader} width={60} className='mt-5'></img></td></tr> :
                         this.state.user.map((values, key) => (
                           <tr key={key}>
                             <td>{values.id}</td>
@@ -205,34 +205,34 @@ class Users extends React.Component {
                             <td>{values.mail}</td>
                             <td className='text-center'>
                               {
-                                values.numCni != new Cookies().get('numCni') ?
+                                values.numCni !== new Cookies().get('numCni') ?
                                   values.isAdmin ?
-                                    <a title="Destituer Administrateur" onClick={() => this.updateAdmin(values.id)} className="text-decoration-none">
+                                    <a href="#" title="Destituer Administrateur" onClick={(e) => { e.preventDefault(); return this.updateAdmin(values.id) }} className="text-decoration-none">
                                       <i className="fas fa-times fa-sm text-danger text-lg"></i>
                                     </a>
                                     :
-                                    <a title="Nommer Administrateur" onClick={() => this.updateAdmin(values.id)} className="text-decoration-none">
+                                    <a href="#" title="Nommer Administrateur" onClick={(e) => { e.preventDefault(); return this.updateAdmin(values.id) }} className="text-decoration-none">
                                       <i className="fas fa-check-square fa-sm text-success text-lg"></i>
                                     </a>
                                   :
-                                  <a aria-disabled={true} title="Vous ne pouvez pas effectuer une action sur votre propre compte" onClick={(e) => e.preventDefault()} className="text-decoration-none">
+                                  <a href="#" aria-disabled={true} title="Vous ne pouvez pas effectuer une action sur votre propre compte" onClick={(e) => e.preventDefault()} className="text-decoration-none">
                                     <i className="fas fa-ban fa-sm text-danger text-lg"></i>
                                   </a>
                               }
                             </td>
                             <td className='text-center'>
                               {
-                                values.numCni != new Cookies().get('numCni') ?
+                                values.numCni !== new Cookies().get('numCni') ?
                                   values.isActivated ?
-                                    <a title="Désactiver l'utiisateur" onClick={() => this.updateUser(values.id)} className="text-decoration-none">
+                                    <a href="#" title="Désactiver l'utiisateur" onClick={(e) => { e.preventDefault(); return this.updateUser(values.id) }} className="text-decoration-none">
                                       <i className="fas fa-times fa-sm text-danger text-lg"></i>
                                     </a>
                                     :
-                                    <a title="Activer l'utiisateur" onClick={() => this.updateUser(values.id)} className="text-decoration-none">
+                                    <a href="#" title="Activer l'utiisateur" onClick={(e) => { e.preventDefault(); return this.updateUser(values.id) }} className="text-decoration-none">
                                       <i className="fas fa-check-square fa-sm text-success text-lg"></i>
                                     </a>
                                   :
-                                  <a aria-disabled={true} title="Vous ne pouvez pas effectuer une action sur votre propre compte" onClick={(e) => e.preventDefault()} className="text-decoration-none">
+                                  <a href="#" aria-disabled={true} title="Vous ne pouvez pas effectuer une action sur votre propre compte" onClick={(e) => e.preventDefault()} className="text-decoration-none">
                                     <i className="fas fa-ban fa-sm text-danger text-lg"></i>
                                   </a>
                               }

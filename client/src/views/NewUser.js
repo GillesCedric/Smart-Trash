@@ -12,9 +12,7 @@ import {
 	Label
 } from "reactstrap";
 import NotificationAlert from "react-notification-alert";
-import loader from "assets/img/loader.svg";
 import { Cookies } from 'react-cookie';
-import { Redirect } from 'react-router-dom';
 import Axios from "axios";
 
 class NewUser extends React.Component {

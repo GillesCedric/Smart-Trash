@@ -1,6 +1,7 @@
 //imports
 var express = require('express');
 var utilisateur = require('./routes/utilisateur');
+var poubelle = require('./routes/poubelle');
 
 //Router
 exports.router = (() => {
@@ -26,6 +27,9 @@ exports.router = (() => {
 	apiRouter.route('/utilisateurs/poubelles/').get(utilisateur.getAllPoubelles);
 	apiRouter.route('/utilisateurs/poubelles/perso').get(utilisateur.getPoubelle);
 	apiRouter.route('/utilisateurs/poubelles/pwv').get(utilisateur.getAllPoubellesWithVideurs);
+
+	//Routes de la poubelle
+	apiRouter.route('/poubelles/update/').get(utilisateur.getAll);
 
 	return apiRouter;
 })();

@@ -26,7 +26,6 @@ import {
   Table,
   Row,
   Col,
-  Button
 } from "reactstrap";
 
 import NotificationAlert from "react-notification-alert";
@@ -190,7 +189,7 @@ class Trash extends React.Component {
                     </thead>
                     <tbody>
                       {!this.state.poubellesVideursReady ?
-                        <tr><td colSpan={9} align='center'><img src={loader} width={60} className='mt-5'></img></td></tr> :
+                        <tr><td colSpan={9} align='center'><img alt="loader" src={loader} width={60} className='mt-5'></img></td></tr> :
                         this.state.poubellesVideurs.map((values, key) => (
                           <tr key={key}>
                             <td>{values.id}</td>
@@ -202,11 +201,11 @@ class Trash extends React.Component {
                             <td>{values.Videur.nom + ' ' + values.Videur.prenom}</td>
                             <td className='text-center'>
                               {values.isActivated ?
-                                <a title="Désactiver la poubelle" onClick={() => this.updatePoubelle(values.id)} className="text-decoration-none">
+                                <a href="#" title="Désactiver la poubelle" onClick={(e) => { e.preventDefault(); return this.updatePoubelle(values.id) }} className="text-decoration-none">
                                   <i className="fas fa-times fa-sm text-danger text-lg"></i>
                                 </a>
                                 :
-                                <a title="Activer la poubelle" onClick={() => this.updatePoubelle(values.id)} className="text-decoration-none">
+                                <a href="#" title="Activer la poubelle" onClick={(e) => { e.preventDefault(); return this.updatePoubelle(values.id) }} className="text-decoration-none">
                                   <i className="fas fa-check-square fa-sm text-success text-lg"></i>
                                 </a>
                               }
@@ -219,7 +218,7 @@ class Trash extends React.Component {
               </Card>
             </Col>
           </Row>
-        </div>
+        </div >
       </>
     );
   }

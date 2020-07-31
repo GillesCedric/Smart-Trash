@@ -92,7 +92,8 @@ class Dashboard extends React.Component {
     //if (this.state.notify === 0) {
     this.refs.notificationAlert.notificationAlert(options);
     //}
-    this.setState({ notify: this.state.notify++ })
+    var n = this.state.notify
+    this.setState({ notify: n++ })
   };
 
   async componentDidMount() {
@@ -179,7 +180,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">Nombre de poubelles</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-bell-55 text-info" />{" "}
-                    {!this.state.poubellesReady ? <img src={loader} width={30}></img> : this.state.poubelles.length}
+                    {!this.state.poubellesReady ? <img alt="loader" src={loader} width={30}></img> : this.state.poubelles.length}
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -190,7 +191,7 @@ class Dashboard extends React.Component {
                   <h5 className="card-category">Nombre de videurs</h5>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-delivery-fast text-primary" />{" "}
-                    {!this.state.videursReady ? <img src={loader} width={30}></img> : this.state.videurs.length}
+                    {!this.state.videursReady ? <img alt="loader" src={loader} width={30}></img> : this.state.videurs.length}
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -205,9 +206,10 @@ class Dashboard extends React.Component {
                       if (values.etat === 'Pleine') {
                         number++
                       }
+                      return null
                     }
                     )}
-                    {!this.state.poubellesReady ? <img src={loader} width={30}></img> : number}
+                    {!this.state.poubellesReady ? <img alt="loader" src={loader} width={30}></img> : number}
                   </CardTitle>
                 </CardHeader>
               </Card>
@@ -234,7 +236,7 @@ class Dashboard extends React.Component {
                     </thead>
                     <tbody>
                       {!this.state.poubellesVideursReady ?
-                        <tr><td colSpan={7} align='center'><img src={loader} width={60} className='mt-5'></img></td></tr> :
+                        <tr><td colSpan={7} align='center'><img alt="loader" src={loader} width={60} className='mt-5'></img></td></tr> :
                         this.state.poubellesVideurs.map((values, key) => (
                           <tr key={key}>
                             <td>{values.id}</td>
@@ -245,11 +247,11 @@ class Dashboard extends React.Component {
                             <td>{values.Videur.nom + ' ' + values.Videur.prenom}</td>
                             <td className='text-center'>
                               {values.isActivated ?
-                                <a title="Désactiver la poubelle" onClick={() => this.updatePoubelle(values.id)} className="text-decoration-none">
+                                <a href="#" title="Désactiver la poubelle" onClick={(e) => { e.preventDefault(); return this.updatePoubelle(values.id) }} className="text-decoration-none">
                                   <i className="fas fa-times fa-sm text-danger text-lg"></i>
                                 </a>
                                 :
-                                <a title="Activer la poubelle" onClick={() => this.updatePoubelle(values.id)} className="text-decoration-none">
+                                <a href="#" title="Activer la poubelle" onClick={(e) => { e.preventDefault(); return this.updatePoubelle(values.id) }} className="text-decoration-none">
                                   <i className="fas fa-check-square fa-sm text-success text-lg"></i>
                                 </a>
                               }

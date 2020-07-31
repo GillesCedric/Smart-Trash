@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
       models.Poubelle.hasMany(models.Sms);
       models.Poubelle.belongsTo(models.Utilisateur, {
         foreignKey: {
-          allowNull: false
+          allowNull: true
         }
       });
       models.Poubelle.belongsTo(models.Videur, {
         foreignKey: {
-          allowNull: false
+          allowNull: true
         }
       });
     }
@@ -66,6 +66,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     utilisateurNumCni: {
       type: DataTypes.STRING,
+      allowNull: true,
       references: {
         model: Utilisateur,
         key: 'numCni',
@@ -73,6 +74,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     videurNumCni: {
       type: DataTypes.STRING,
+      allowNull: true,
       references: {
         model: Videur,
         key: 'numCni',
