@@ -16,7 +16,7 @@ if (env == "production") {
 } else {
 	link = `${config.host}:${config.port}${config.base}`
 }
-console.log(link)
+
 
 class Login extends React.Component {
 	constructor(props) {
@@ -126,6 +126,7 @@ class Login extends React.Component {
 	}
 
 	render() {
+		console.log(link)
 		return (
 			<>
 				<img alt="wave" className="wave" src={wave}></img>
