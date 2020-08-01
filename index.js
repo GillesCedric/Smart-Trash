@@ -23,6 +23,6 @@ server.get('/', (req, res) => {
 server.use('/api/', apiRouter);
 
 //launch server
-server.listen(8080, () => {
-	console.log('serveur en écoute sur le port 8080...');
+server.listen(process.env.PORT || 5000, () => {
+	console.log('serveur en écoute sur le port ' + process.env.PORT || 5000);
 });
