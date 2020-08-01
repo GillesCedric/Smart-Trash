@@ -15,6 +15,15 @@ import NotificationAlert from "react-notification-alert";
 import { Cookies } from 'react-cookie';
 import Axios from "axios";
 
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+	link = `${config.host}${config.base}`
+} else {
+	link = `${config.host}:${config.port}${config.base}`
+}
+
 class NewUser extends React.Component {
 	constructor(props) {
 		super(props)
@@ -118,7 +127,7 @@ class NewUser extends React.Component {
 			return null
 		}
 
-		Axios.post('http://localhost:8080/api/utilisateurs/register/', data, { headers: headers }
+		Axios.post(link +'/utilisateurs/register/', data, { headers: headers }
 		)
 			.then(result => {
 				this.notify("tr", null, "Inscription de l'utilisateur réussie")

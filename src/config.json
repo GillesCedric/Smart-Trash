@@ -1,0 +1,16 @@
+{
+	"development": {
+		"host": "http://localhost",
+		"base": "/api",
+		"port": "8080"
+	},
+	"test": {
+		"host": "http://localhost",
+		"base": "/api",
+		"port": "8080"
+	},
+	"production": {
+		"host": "https://smart-trash-s.herokuapp.com",
+		"base": "/api"
+	}
+}

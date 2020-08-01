@@ -39,6 +39,15 @@ import { Redirect } from 'react-router-dom';
 
 import Axios from "axios";
 
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+  link = `${config.host}${config.base}`
+} else {
+  link = `${config.host}:${config.port}${config.base}`
+}
+
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -99,7 +108,7 @@ class UserProfile extends React.Component {
       Authorization: this.state.token
     }
 
-    await Axios.get('http://localhost:8080/api/utilisateurs/perso/', { headers: headers }
+    await Axios.get(link + '/utilisateurs/perso/', { headers: headers }
     )
       .then(result => {
         console.log(result)

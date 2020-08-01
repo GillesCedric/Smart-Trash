@@ -8,7 +8,14 @@ import { Cookies } from 'react-cookie';
 import NotificationAlert from "react-notification-alert";
 
 
-
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+	link = `${config.host}${config.base}`
+} else {
+	link = `${config.host}:${config.port}${config.base}`
+}
 
 class Login extends React.Component {
 	constructor(props) {
@@ -101,7 +108,7 @@ class Login extends React.Component {
 			password: this.state.password,
 		}
 
-		Axios.post('http://localhost:8080/api/utilisateurs/login/', data
+		Axios.post(link + '/utilisateurs/login/', data
 		)
 			.then(result => {
 				cookie.set('token', result.data.token, { maxAge: 60 * 60 * 2 })

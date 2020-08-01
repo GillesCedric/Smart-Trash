@@ -37,6 +37,15 @@ import { Redirect } from 'react-router-dom';
 
 import Axios from "axios";
 
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+  link = `${config.host}${config.base}`
+} else {
+  link = `${config.host}:${config.port}${config.base}`
+}
+
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -97,7 +106,7 @@ class Users extends React.Component {
       Authorization: this.state.token
     }
 
-    await Axios.get('http://localhost:8080/api/utilisateurs/get/', { headers: headers }
+    await Axios.get(link + '/utilisateurs/get/', { headers: headers }
     )
       .then(result => {
         this.setState({ user: result.data, userReady: true })
@@ -123,7 +132,7 @@ class Users extends React.Component {
     const data = {
       idUser: id
     }
-    await Axios.post('http://localhost:8080/api/utilisateurs/activate/', data, { headers: headers }
+    await Axios.post(link + '/utilisateurs/activate/', data, { headers: headers }
     )
       .then(result => {
         this.notify("tr", 2, 'Mise à jour éffectuuée')
@@ -143,7 +152,7 @@ class Users extends React.Component {
     const data = {
       idUser: id
     }
-    await Axios.post('http://localhost:8080/api/utilisateurs/admin/', data, { headers: headers }
+    await Axios.post(link + '/utilisateurs/admin/', data, { headers: headers }
     )
       .then(result => {
         this.notify("tr", 2, 'Mise à jour éffectuuée')

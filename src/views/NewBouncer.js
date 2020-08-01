@@ -15,6 +15,15 @@ import NotificationAlert from "react-notification-alert";
 import { Cookies } from 'react-cookie';
 import Axios from "axios";
 
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+	link = `${config.host}${config.base}`
+} else {
+	link = `${config.host}:${config.port}${config.base}`
+}
+
 class NewBouncer extends React.Component {
 	constructor(props) {
 		super(props)
@@ -109,7 +118,7 @@ class NewBouncer extends React.Component {
 		}
 
 
-		Axios.post('http://localhost:8080/api/utilisateurs/videurs/add', data, { headers: headers }
+		Axios.post(link + '/utilisateurs/videurs/add', data, { headers: headers }
 		)
 			.then(result => {
 				this.notify("tr", null, "Inscription de du videur réussie")

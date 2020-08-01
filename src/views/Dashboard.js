@@ -36,6 +36,15 @@ import Axios from "axios";
 import { Cookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
 
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+  link = `${config.host}${config.base}`
+} else {
+  link = `${config.host}:${config.port}${config.base}`
+}
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
@@ -103,7 +112,7 @@ class Dashboard extends React.Component {
     const headers = {
       Authorization: this.state.token
     }
-    Axios.get('http://localhost:8080/api/utilisateurs/poubelles/', { headers: headers }
+    Axios.get(link + '/utilisateurs/poubelles/', { headers: headers }
     )
       .then(result => {
         this.setState({ poubelles: result.data, poubellesReady: true })
@@ -112,7 +121,7 @@ class Dashboard extends React.Component {
         console.log(err)
       });
 
-    Axios.get('http://localhost:8080/api/utilisateurs/videurs/', { headers: headers }
+    Axios.get(link + '/utilisateurs/videurs/', { headers: headers }
     )
       .then(result => {
         this.setState({ videurs: result.data, videursReady: true })
@@ -121,7 +130,7 @@ class Dashboard extends React.Component {
         console.log(err)
       });
 
-    Axios.get('http://localhost:8080/api/utilisateurs/poubelles/pwv/', { headers: headers }
+    Axios.get(link + '/utilisateurs/poubelles/pwv/', { headers: headers }
     )
       .then(result => {
         this.setState({ poubellesVideurs: result.data, poubellesVideursReady: true })
@@ -147,7 +156,7 @@ class Dashboard extends React.Component {
     const data = {
       idPoubelle: id
     }
-    Axios.post('http://localhost:8080/api/utilisateurs/poubelles/activate/', data, { headers: headers }
+    Axios.post(link + '/utilisateurs/poubelles/activate/', data, { headers: headers }
     )
       .then(result => {
         this.notify("tr", 2, 'Mise à jour éffectuuée')

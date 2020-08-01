@@ -36,6 +36,15 @@ import { Redirect } from 'react-router-dom';
 
 import Axios from "axios";
 
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config.json')[env];
+var link = "";
+if (env === "production") {
+  link = `${config.host}${config.base}`
+} else {
+  link = `${config.host}:${config.port}${config.base}`
+}
+
 class Bouncers extends React.Component {
   constructor(props) {
     super(props);
@@ -96,7 +105,7 @@ class Bouncers extends React.Component {
       Authorization: this.state.token
     }
 
-    await Axios.get('http://localhost:8080/api/utilisateurs/videurs/', { headers: headers }
+    await Axios.get(link + '/utilisateurs/videurs/', { headers: headers }
     )
       .then(result => {
         this.setState({ videurs: result.data, videursReady: true })
@@ -122,7 +131,7 @@ class Bouncers extends React.Component {
     const data = {
       idVideur: id
     }
-    await Axios.post('http://localhost:8080/api/utilisateurs/videurs/activate/', data, { headers: headers }
+    await Axios.post(link + '/utilisateurs/videurs/activate/', data, { headers: headers }
     )
       .then(result => {
         this.notify("tr", 2, 'Mise à jour éffectuuée')
@@ -135,7 +144,7 @@ class Bouncers extends React.Component {
   }
 
   render() {
-
+    console.log(config)
     if (this.state.token.length < 20) {
       return <Redirect to='/login' ref="notificationAlert" />
     }
