@@ -11,11 +11,12 @@ import NotificationAlert from "react-notification-alert";
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config.json')[env];
 var link = "";
-if (env === "production") {
+if (env == "production") {
 	link = `${config.host}${config.base}`
 } else {
 	link = `${config.host}:${config.port}${config.base}`
 }
+console.log(link)
 
 class Login extends React.Component {
 	constructor(props) {
