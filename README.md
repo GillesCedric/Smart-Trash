@@ -1,2 +1,2 @@
-# GesPoubelle-server
-API pour la gestion du serveur de l'application GesPoubelle
+# Smart-Trash-server
+API pour la gestion du serveur de l'application Smart-Trash
