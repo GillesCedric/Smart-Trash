@@ -16,13 +16,11 @@ import { Cookies } from 'react-cookie';
 import Axios from "axios";
 
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config.json')[env];
-var link = "";
-if (env === "production") {
-	link = `${config.host}${config.base}`
-} else {
-	link = `${config.host}:${config.port}${config.base}`
-}
+const config = require('../config.json')["data"];
+
+const link = `${config.host}${config.base}`
+
+const linkLocal = `${config.host}:${config.port}${config.base}`
 
 class NewBouncer extends React.Component {
 	constructor(props) {
