@@ -116,7 +116,7 @@ class Admin extends React.Component {
             routes={routes}
             bgColor={this.state.backgroundColor}
             logo={{
-              outterLink: "https://www.smart-trash.neway-agency.com/",
+              outterLink: "https://smart-trash.neway-agency.com/",
               text: "Smart-Trash",
               imgSrc: logo
             }}
