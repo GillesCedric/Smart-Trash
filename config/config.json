@@ -4,7 +4,6 @@
     "password": "nhvtkbi3pg",
     "database": "neway1227597",
     "host": "185.98.131.90",
-    "port": "3306",
     "dialect": "mysql"
   },
   "test": {
@@ -20,7 +19,6 @@
     "password": "nhvtkbi3pg",
     "database": "neway1227597",
     "host": "185.98.131.90",
-    "port": "3306",
     "dialect": "mysql"
   }
 }
