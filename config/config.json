@@ -1,11 +1,13 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "gespoubelle_development",
-    "host": "127.0.0.1",
-    "port": "3308",
-    "dialect": "mysql"
+    "user": "neway1227597",
+    "password": "nhvtkbi3pg",
+    "database": "neway1227597",
+    "host": "185.98.131.90",
+    "dialect": "mariadb",
+    "dialectOptions": {
+      "timezone": "ETC/GMT0"
+    }
   },
   "test": {
     "username": "root",
@@ -16,11 +18,13 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "gespoubelle_production",
-    "host": "127.0.0.1",
-    "port": "3308",
-    "dialect": "mysql"
+    "user": "neway1227597",
+    "password": "nhvtkbi3pg",
+    "database": "neway1227597",
+    "host": "185.98.131.90",
+    "dialect": "mariadb",
+    "dialectOptions": {
+      "timezone": "ETC/GMT0"
+    }
   }
 }
