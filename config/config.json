@@ -1,13 +1,11 @@
 {
   "development": {
-    "user": "neway1227597",
+    "username": "neway1227597",
     "password": "nhvtkbi3pg",
     "database": "neway1227597",
     "host": "185.98.131.90",
-    "dialect": "mariadb",
-    "dialectOptions": {
-      "timezone": "ETC/GMT0"
-    }
+    "port": "3306",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
@@ -18,13 +16,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "user": "neway1227597",
+    "username": "neway1227597",
     "password": "nhvtkbi3pg",
     "database": "neway1227597",
     "host": "185.98.131.90",
-    "dialect": "mariadb",
-    "dialectOptions": {
-      "timezone": "ETC/GMT0"
-    }
+    "port": "3306",
+    "dialect": "mysql"
   }
 }
