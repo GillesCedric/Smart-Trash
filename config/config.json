@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "neway1227597",
-    "password": "nhvtkbi3pg",
-    "database": "neway1227597",
-    "host": "185.98.131.90",
+    "username": "b0b19ebdd1c052",
+    "password": "6c00ec32",
+    "database": "heroku_4f981dc2d16c1b6",
+    "host": "us-cdbr-east-02.cleardb.com",
     "port": "3306",
     "dialect": "mysql"
   },
@@ -16,10 +16,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "neway1227597",
-    "password": "nhvtkbi3pg",
-    "database": "neway1227597",
-    "host": "185.98.131.90",
+    "username": "b0b19ebdd1c052",
+    "password": "6c00ec32",
+    "database": "heroku_4f981dc2d16c1b6",
+    "host": "us-cdbr-east-02.cleardb.com",
     "port": "3306",
     "dialect": "mysql"
   }
