@@ -14,7 +14,7 @@
 		"base": "/api"
 	},
 	"data": {
-		"host": "https://smart-trash-s.herokuapp.com",
+		"host": "https://smart-trash-serv.herokuapp.com",
 		"host2": "http://localhost",
 		"base": "/api",
 		"port": "8080"
