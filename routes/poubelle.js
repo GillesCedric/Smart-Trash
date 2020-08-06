@@ -14,11 +14,18 @@ module.exports = {
 		var adresseIp = req.body.adresseIp;
 		var niveau = req.body.niveau;
 
-		if (adresseIp == null || niveau == null) {
-			return res.status(400).json({ 'error': 'paramètres manquants' });
+		if (adresseIp == null) {
+			console.log('paramètres manquants (addresseip)');
+			return res.status(400).json({ 'error': 'paramètres manquants (addresseip)' });
+		}
+
+		if (niveau == null) {
+			console.log('paramètres manquants (niveau)');
+			return res.status(400).json({ 'error': 'paramètres manquants (niveau)' });
 		}
 
 		if (!IP_ADDRESS_REGEX.test(adresseIp)) {
+			console.log('addresseip invalide');
 			return res.status(400).json({ 'error': 'l\'addresse ip est invalide' });
 		}
 
