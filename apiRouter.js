@@ -29,7 +29,7 @@ exports.router = (() => {
 	apiRouter.route('/utilisateurs/poubelles/pwv').get(utilisateur.getAllPoubellesWithVideurs);
 
 	//Routes de la poubelle
-	apiRouter.route('/poubelles/update/').get(poubelle.update);
+	apiRouter.route('/poubelles/update/').post(poubelle.update);
 
 	return apiRouter;
 })();
