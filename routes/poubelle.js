@@ -10,23 +10,25 @@ const IP_ADDRESS_REGEX = /^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1
 module.exports = {
 	update: (req, res) => {
 		//params
-		var token = req.body.token;
-		var adresseIp = req.body.adresseIp;
-		var niveau = req.body.niveau;
+		// var token = req.body.token;
+		// var adresseIp = req.body.adresseIp;
+		// var niveau = req.body.niveau;
 
-		if (adresseIp == null) {
-			console.log('paramètres manquants (addresseip)');
-			return res.status(400).json({ 'error': 'paramètres manquants (addresseip)' });
+		var data = req.body.data;
+
+		if (data == null) {
+			return res.status(400).json({ 'error': 'paramètre manquant' });
 		}
 
-		if (niveau == null) {
-			console.log('paramètres manquants (niveau)');
-			return res.status(400).json({ 'error': 'paramètres manquants (niveau)' });
-		}
+		data = data.split(",");
+		var token = data[0].replace(' ', '');
+		var adresseIp = data[2].replace(' ', '');
+		var niveau = data[1].replace(' ', '');
 
-		if (!IP_ADDRESS_REGEX.test(adresseIp)) {
-			console.log('addresseip invalide');
-			return res.status(400).json({ 'error': 'l\'addresse ip est invalide' });
+		if (adresseIp !== null) {
+			if (!IP_ADDRESS_REGEX.test(adresseIp)) {
+				return res.status(400).json({ 'error': 'l\'addresse ip est invalide' });
+			}
 		}
 
 		asyncLib.waterfall([
