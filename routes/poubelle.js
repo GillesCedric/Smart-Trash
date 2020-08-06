@@ -36,8 +36,8 @@ module.exports = {
 								marque: null,
 								dimensions: null,
 								adresseIp: adresseIp,
-								etat: getEtat(niveau),
-								niveau: niveau,
+								etat: getEtat(parseInt(niveau)),
+								niveau: parseInt(niveau),
 								isActivated: true
 							})
 								.then(poubelle => {
