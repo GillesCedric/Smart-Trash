@@ -18,11 +18,10 @@ server.use(cors());
 server.get('/', (req, res) => {
 	res.setHeader('Content-Type', 'text/html');
 	if (req.body.a) {
-		res.status(200).send('<h1>Bienvenue sur le serveur de Smart-Trash</h1>' + req.body.a);
+		res.status(200).send('<h1>Bienvenue sur le serveur de Smart-Trash</h1><br>Params= ' + req.body.a);
 	} else {
 		res.status(200).send('<h1>Bienvenue sur le serveur de Smart-Trash</h1>');
 	}
-
 });
 
 server.use('/api/', apiRouter);
