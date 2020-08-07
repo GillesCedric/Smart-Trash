@@ -25,11 +25,11 @@ module.exports = {
 		var adresseIp = data[2].replace(' ', '');
 		var niveau = data[1].replace(' ', '');
 
-		if (adresseIp !== null) {
-			if (!IP_ADDRESS_REGEX.test(adresseIp)) {
-				return res.status(400).json({ 'error': 'l\'addresse ip est invalide' });
-			}
-		}
+		// if (adresseIp !== null) {
+		// 	if (!IP_ADDRESS_REGEX.test(adresseIp)) {
+		// 		return res.status(400).json({ 'error': 'l\'addresse ip est invalide' });
+		// 	}
+		// }
 
 		asyncLib.waterfall([
 			done => {
