@@ -65,7 +65,7 @@ module.exports = {
 			},
 			(poubelleFound, done) => {
 				if (poubelleFound) {
-					models.Poubelle.update({
+					poubelleFound.update({
 						adresseIp: adresseIp,
 						etat: getEtat(parseInt(niveau)),
 						niveau: parseInt(niveau),
@@ -75,8 +75,10 @@ module.exports = {
 						})
 						.catch(err => {
 							console.log(err);
-							//return res.status(500).json({ 'error': 'impossible de mettre à jour la poubelle' });
-							return res.status(500).json({ 'addresseip ': adresseIp }, { 'etat ': getEtat(parseInt(niveau)) }, { 'addresseip ': parseInt(niveau) });
+							return res.status(500).json({ 'error': 'impossible de mettre à jour la poubelle' });
+							// console.log('etat ' + getEtat(parseInt(niveau)));
+							// console.log('   niveau ' + parseInt(niveau));
+							// return res.status(500).json({ 'addresseip ': adresseIp }, { 'etat ': getEtat(parseInt(niveau)) }, { 'addresseip ': parseInt(niveau) });
 						})
 				} else {
 					return res.status(404).json({ 'error': 'la poubelle n\'existe pas' });
