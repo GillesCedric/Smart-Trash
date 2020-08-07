@@ -67,8 +67,8 @@ module.exports = {
 				if (poubelleFound) {
 					models.Poubelle.update({
 						adresseIp: adresseIp,
-						etat: getEtat(niveau),
-						niveau: niveau
+						etat: getEtat(parseInt(niveau)),
+						niveau: parseInt(niveau),
 					})
 						.then(poubelle => {
 							done(poubelle);
