@@ -41,7 +41,7 @@ module.exports = {
 							done(null, poubelleFound);
 						} else {
 							models.Poubelle.create({
-								token: generateTokenForPoubelle(),
+								token: token,
 								marque: null,
 								dimensions: null,
 								adresseIp: adresseIp,
