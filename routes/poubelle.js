@@ -75,7 +75,8 @@ module.exports = {
 						})
 						.catch(err => {
 							console.log(err);
-							return res.status(500).json({ 'error': 'impossible de mettre à jour la poubelle' });
+							//return res.status(500).json({ 'error': 'impossible de mettre à jour la poubelle' });
+							return res.status(500).json({ 'addresseip ': adresseIp }, { 'etat ': getEtat(parseInt(niveau)) }, { 'addresseip ': parseInt(niveau) });
 						})
 				} else {
 					return res.status(404).json({ 'error': 'la poubelle n\'existe pas' });
