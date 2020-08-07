@@ -47,7 +47,9 @@ module.exports = {
 								adresseIp: adresseIp,
 								etat: getEtat(parseInt(niveau)),
 								niveau: parseInt(niveau),
-								isActivated: true
+								isActivated: true,
+								utilisateurNumCni: "5412ASHA5421",
+								videurNumCni: "FEDZZE6451Y"
 							})
 								.then(poubelle => {
 									return res.status(201).json(poubelle);
